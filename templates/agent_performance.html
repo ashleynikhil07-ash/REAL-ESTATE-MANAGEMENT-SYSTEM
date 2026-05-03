@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agent Performance</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            border-radius: 15px;
+        }
+
+        .chart-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body class="container mt-5">
+
+<h2>📊 Agent Performance Dashboard</h2>
+
+<!-- TABLE -->
+<div class="card p-3 mb-4 bg-light text-dark">
+<table class="table table-bordered text-center">
+<tr class="table-dark">
+    <th>Agent</th>
+    <th>Success</th>
+    <th>Rejected</th>
+    <th>Commission (₹)</th>
+</tr>
+
+{% for d in data %}
+<tr>
+    <td>{{ d[0] }}</td>
+    <td>{{ d[1] }}</td>
+    <td>{{ d[2] }}</td>
+    <td>₹{{ d[3] }}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+<!-- CHART -->
+<div class="chart-box">
+    <canvas id="agentChart"></canvas>
+</div>
+
+<br>
+
+<div class="text-center">
+    <a href="/admin" class="btn btn-light">⬅ Back</a>
+</div>
+
+<script>
+const labels = [
+    {% for d in data %}
+        "{{ d[0] }}",
+    {% endfor %}
+];
+
+const successData = [
+    {% for d in data %}
+        {{ d[1] }},
+    {% endfor %}
+];
+
+const rejectedData = [
+    {% for d in data %}
+        {{ d[2] }},
+    {% endfor %}
+];
+
+new Chart(document.getElementById('agentChart'), {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [
+            {
+                label: 'Success',
+                data: successData
+            },
+            {
+                label: 'Rejected',
+                data: rejectedData
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                labels: {
+                    color: 'black'
+                }
+            }
+        },
+        scales: {
+            x: {
+                ticks: { color: 'black' }
+            },
+            y: {
+                ticks: { color: 'black' }
+            }
+        }
+    }
+});
+</script>
+
+</body>
+</html>

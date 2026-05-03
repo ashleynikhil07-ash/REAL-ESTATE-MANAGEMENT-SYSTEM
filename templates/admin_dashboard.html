@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            min-height: 100vh;
+            color: white;
+        }
+
+        h2 {
+            font-weight: bold;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .card h5 {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            border-radius: 8px;
+        }
+
+        .logout-btn {
+            padding: 10px 25px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <h2 class="mb-4 text-center">🏢 Admin Dashboard</h2>
+
+    <div class="row g-4">
+
+        <!-- Row 1 -->
+        <div class="col-md-3">
+            <div class="card text-center shadow p-4 bg-white text-dark">
+                <h5>➕ Add Property</h5>
+                <a href="/add_property" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow p-4 bg-white text-dark">
+                <h5>🏠 View Properties</h5>
+                <a href="/view_properties" class="btn btn-success">Go</a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow p-4 bg-white text-dark">
+                <h5>📊 Reports</h5>
+                <a href="/reports" class="btn btn-info">Go</a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow p-4 bg-white text-dark">
+                <h5>👤 Add Agent</h5>
+                <a href="/add_agent" class="btn btn-warning">Go</a>
+            </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="col-md-3">
+            <div class="card text-center shadow p-4 bg-white text-dark">
+                <h5>📈 Agent Performance</h5>
+                <a href="/agent_performance" class="btn btn-dark">Go</a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow p-4 bg-white text-dark">
+                <h5>👨‍💼 Manage Agents</h5>
+                <a href="/manage_agents" class="btn btn-secondary">Open</a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow p-4 bg-white text-dark">
+                <h5>💰 Record Sale</h5>
+                <a href="/add_sale" class="btn btn-success">Go</a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow p-4 bg-white text-dark">
+                <h5>📊 Sales Dashboard</h5>
+                <a href="/sales_dashboard" class="btn btn-success">View</a>
+            </div>
+        </div>
+       
+        <div class="col-md-3">
+    <div class="card text-center shadow p-4 bg-white text-dark">
+        <h5>💰 View Payments</h5>
+        <a href="/payments" class="btn btn-success">Open</a>
+    </div>
+</div>
+
+   
+
+    <div class="mt-5 text-center">
+        <a href="/logout" class="btn btn-danger logout-btn">Logout</a>
+    </div>
+
+</div>
+
+</body>
+</html>

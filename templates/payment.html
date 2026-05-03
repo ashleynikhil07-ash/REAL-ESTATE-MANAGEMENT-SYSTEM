@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f4f6f9;
+        }
+
+        .form-box {
+            max-width: 400px;
+            margin: auto;
+            margin-top: 80px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+        }
+    </style>
+
+    <script>
+        function showPayment(type) {
+            document.getElementById("upiBox").style.display = "none";
+            document.getElementById("cardBox").style.display = "none";
+
+            if (type === "upi") {
+                document.getElementById("upiBox").style.display = "block";
+            } else if (type === "card") {
+                document.getElementById("cardBox").style.display = "block";
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+<div class="form-box text-center">
+
+<h4>💳 Payment</h4>
+
+<p><b>Property:</b> {{ property[1] }}</p>
+<p><b>Amount:</b> ₹{{ property[3] }}</p>
+
+<form method="POST">
+
+    <!-- PAYMENT METHOD -->
+    <div class="mb-3">
+        <label>Select Payment Method</label>
+        <select name="method" class="form-control" onchange="showPayment(this.value)">
+            <option value="">Choose</option>
+            <option value="upi">UPI</option>
+            <option value="card">Card</option>
+        </select>
+    </div>
+
+    <!-- 🔥 UPI SECTION -->
+    <div id="upiBox" style="display:none;">
+
+        <p>Scan QR to pay</p>
+
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=ashleynikhil07@okhdfc&pn=RealEstate&am={{ property[3] }}">
+
+        <input type="text" name="upi_id" class="form-control mt-2" placeholder="Enter your UPI ID">
+
+    </div>
+
+    <!-- 🔥 CARD SECTION -->
+    <div id="cardBox" style="display:none;">
+
+        <input type="text" name="card_number" class="form-control mt-2" placeholder="Card Number">
+
+        <input type="text" name="card_name" class="form-control mt-2" placeholder="Card Holder Name">
+
+        <input type="text" name="expiry" class="form-control mt-2" placeholder="MM/YY">
+
+        <input type="text" name="cvv" class="form-control mt-2" placeholder="CVV">
+
+    </div>
+
+    <button type="submit" class="btn btn-success w-100 mt-3">
+        Pay Now
+    </button>
+
+</form>
+
+</div>
+
+</body>
+</html>
